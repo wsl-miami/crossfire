@@ -1,0 +1,27 @@
+sh echo PRE ATTACK
+sh echo OPENING XTERMS
+x h1
+x h8
+x h2
+h1 xterm -e ping 10.0.0.8&
+h8 xterm -e ping 10.0.0.1&
+h2 xterm -e "echo"
+sh echo PRESS SPACE TO CONTINUE TO ATTACK
+sh bash -c "read -r -s -d ' '"
+sh echo SERVER SETUP:
+h9 iperf -s -u -D
+h10 iperf -s -u -D
+h11 iperf -s -u -D
+h12 iperf -s -u -D
+h13 iperf -s -u -D
+h14 iperf -s -u -D
+sh echo CLIENT SENDING TRAFFIC
+h2 iperf -c h9 -u -b 20M -t 60 > /dev/null &
+h3 iperf -c h10 -u -b 20M -t 60 > /dev/null &
+h4 iperf -c h11 -u -b 20M -t 60 > /dev/null &
+h5 iperf -c h12 -u -b 20M -t 60 > /dev/null &
+h6 iperf -c h13 -u -b 20M -t 60 > /dev/null &
+h7 iperf -c h14 -u -b 20M -t 60 > /dev/null &
+sh echo ATTACK STARTED 60 Seconds
+sh sleep 70
+sh echo ATTACK ENDED

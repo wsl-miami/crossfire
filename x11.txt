@@ -1,0 +1,1 @@
+cp ~mininet/.Xauthority ~root/.Xauthority
